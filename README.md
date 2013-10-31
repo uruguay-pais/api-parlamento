@@ -2,8 +2,8 @@ Una API que devuelve JSON con los legisladores y el trabajo del Parlamento. Insp
 
 ### Caracterizticas
 
-. Buscar datos de legisladores por nombre.
-. Comites del parlamento, miembros y temas.
+* Buscar datos de legisladores por nombre.
+* Comites del parlamento, miembros y temas.
 
 
 ### Uso
@@ -17,13 +17,14 @@ Una API que devuelve JSON con los legisladores y el trabajo del Parlamento. Insp
  Campos
 
      "nombre": "Nombre",
+     "apellido": "Apellido",
      "partido": "El partido que sea",
      "email": "Correo electronico"
 
 ### Mapa de Ruta
 
-. Leyes
-. Proyectos de Ley
+* Leyes
+* Proyectos de Ley
 
 ### Licencia
 
