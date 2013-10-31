@@ -37,6 +37,15 @@ post '/senadores' do
   settings.mongo_db['senadores'].find(options).to_a.to_json
 end
 
+post '/diputados' do
+  content_type :json
+  options  = {}
+  params.each_key do |key|
+    options[key] = params[key].downcase
+  end
+ 
+  settings.mongo_db['diputados'].find(options).to_a.to_json
+end
 
 helpers do
   def object_id val
