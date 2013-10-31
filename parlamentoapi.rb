@@ -16,9 +16,15 @@ config = Confstruct::Configuration.new(
 )
 
 configure do
-  conn = MongoClient.new("localhost", 27017)
+  db = URI.parse(ENV['MONGOHQ_URL'])
+  db_name = db.path.gsub(/^\//, '')
+
+  conn = MongoClient.new(db.host, db.port)
+  con.authenticate(db.user, db.password) unless (db.user.nil? || db.password.nil?)
+
+  #conn = MongoClient.new("localhost", 27017)
   set :mongo_connection, conn
-  set :mongo_db, conn.db('parlamento')
+  set :mongo_db, conn.db(db_name)
 end
 
 set :haml, :format => :html5
