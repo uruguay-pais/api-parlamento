@@ -1,8 +1,8 @@
-ENV['RACK_ENV'] = "development"
+#ENV['RACK_ENV'] = "development"
 
 require 'rubygems'
 require 'bundler'
 Bundler.require
 
-require './parlamentoapi.rb'
+require './parlamentoapi'
 run Sinatra::Application
