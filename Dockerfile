@@ -1,12 +1,13 @@
-FROM ubuntu:lastest
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
-RUN echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | tee /etc/apt/sources.list.d/10gen.list
-RUN dpkg-divert --local --rename --add /sbin/initctl
-RUN ln -s /bin/true /sbin/initctl
-
-# Install MongoDB
+# DOCKER-VERSION 0.5.3
+FROM ubuntu:12.10
 RUN apt-get update
-RUN apt-get install mongodb-10gen
-RUN mkdir -p /data/db
-EXPOSE 27017
-ENTRYPOINT ["usr/bin/mongod"]
+RUN apt-get install build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison pkg-config wget -y
+RUN wget ftp://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p194.tar.gz
+RUN tar xvf ruby-1.9.3-p194.tar.gz
+RUN cd ruby-1.9.3-p194; ./configure; make install
+RUN gem update --system
+RUN gem install bundler
+Add ./src
+RUN bundle install
+EXPOSE 4567
+CMD ["ruby", "/src/parlamentoapi.rb"]
