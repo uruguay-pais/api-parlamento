@@ -1,0 +1,6 @@
+linodeCubox
+
+install rvm
+have ruby 1.9.3
+
+deploy
