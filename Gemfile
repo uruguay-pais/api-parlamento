@@ -3,6 +3,7 @@ source "http://rubygems.org"
 gem 'sinatra'
 gem 'sinatra-mongo'
 gem 'rack'
+gem 'haml'
 
 gem 'haml'
 gem 'json'
